@@ -23,13 +23,24 @@ def download_company_facts(ticker: str, cik: str):
     out.write_bytes(get(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json").content)
     print(f"  facts: saved {ticker}")
 
+def all_filings(cik: str) -> list:
+    """Recent filings plus older pages EDGAR splits off for busy filers."""
+    sub = get(f"https://data.sec.gov/submissions/CIK{cik}.json").json()
+    pages = [sub["filings"]["recent"]]
+    for older in sub["filings"].get("files", []):
+        pages.append(get(f"https://data.sec.gov/submissions/{older['name']}").json())
 
+    rows = []
+    for page in pages:
+        rows.extend(zip(page["form"], page["accessionNumber"], page["primaryDocument"],
+                        page["reportDate"], page["filingDate"]))
+    return rows
 def download_10ks(ticker: str, cik: str):
     recent = get(f"https://data.sec.gov/submissions/CIK{cik}.json").json()["filings"]["recent"]
     filings = zip(recent["form"], recent["accessionNumber"],
                   recent["primaryDocument"], recent["reportDate"], recent["filingDate"])
 
-    for form, accession, doc, report_date, filing_date in filings:
+    for form, accession, doc, report_date, filing_date in all_filings(cik):
         if form != "10-K":  # skips amendments (10-K/A)
             continue
         fiscal_year = int(report_date[:4])
