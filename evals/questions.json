@@ -1,27 +1,193 @@
 [
   {
+    "id": "doc-001",
+    "question": "What risks does Nvidia describe in its fiscal 2025 10-K related to US export controls?",
+    "category": "docs",
+    "check": "judge",
+    "expected_answer": "Nvidia says US export restrictions limit or block sales of its advanced data center GPUs to China and certain other countries. It warns these rules can change quickly, can reduce revenue and competitiveness in those markets, may push customers toward competitors, and may require costly product redesigns or licenses that may not be granted.",
+    "source": "NVDA 10-K FY2025, Item 1A Risk Factors",
+    "verified": false
+  },
+  {
+    "id": "doc-002",
+    "question": "What reportable business segments does AMD describe in its fiscal 2024 10-K?",
+    "category": "docs",
+    "check": "judge",
+    "expected_answer": "Four segments: Data Center, Client, Gaming, and Embedded.",
+    "source": "AMD 10-K FY2024, Item 1 Business",
+    "verified": false
+  },
+  {
+    "id": "doc-003",
+    "question": "How does Netflix describe its competition in its fiscal 2024 10-K?",
+    "category": "docs",
+    "check": "judge",
+    "expected_answer": "Netflix says it competes broadly for members' entertainment time and spending: other streaming services, linear TV, video games, user-generated video platforms like YouTube, social media, and other leisure activities. It describes the market as intensely competitive and rapidly changing.",
+    "source": "NFLX 10-K FY2024, Item 1 Business",
+    "verified": false
+  },
+  {
+    "id": "doc-004",
+    "question": "What risks does Apple describe related to its manufacturing and supply chain in its fiscal 2024 10-K?",
+    "category": "docs",
+    "check": "judge",
+    "expected_answer": "Apple relies on outsourcing partners, many located outside the US and concentrated in China mainland, India, Japan, South Korea, Taiwan and Vietnam, and on single or limited sources for some components. Disruptions from geopolitical tension, trade restrictions, natural disasters, public health issues, or supplier problems could limit supply and raise costs.",
+    "source": "AAPL 10-K FY2024, Item 1A Risk Factors",
+    "verified": false
+  },
+  {
+    "id": "doc-005",
+    "question": "What reasons does Intel's management give in its fiscal 2024 10-K for its large net loss?",
+    "category": "docs",
+    "check": "judge",
+    "expected_answer": "Management points to restructuring and impairment charges (including asset impairments and the cost-reduction plan announced in 2024), a large valuation allowance against deferred tax assets, lower gross margins as it ramps new process technology and products, and weakness in some segments.",
+    "source": "INTC 10-K FY2024, Item 7 MD&A",
+    "verified": false
+  },
+  {
     "id": "num-001",
     "question": "What was AMD's total revenue in fiscal year 2024?",
     "category": "sql",
-    "expected_answer": "$25.8 billion",
     "check": "number",
+    "expected_answer": "$25.8 billion",
     "expected_value": 25785000000,
     "tolerance": 0.01,
-    "source": "AMD 10-K FY2024, Consolidated Statements of Operations"
+    "source": "AMD 10-K FY2024, Consolidated Statements of Operations",
+    "verified": false
   },
   {
-    "id": "doc-001",
-    "question": "What risks does Nvidia describe related to export controls?",
-    "category": "docs",
-    "expected_answer": "US export restrictions limit sales of advanced chips to China and other regions, which could reduce revenue...",
+    "id": "num-002",
+    "question": "Which company in the dataset reported the highest research and development expense in fiscal year 2024?",
+    "category": "sql",
     "check": "judge",
-    "source": "NVDA 10-K FY2025, Item 1A"
+    "expected_answer": "Alphabet, at about $49.3 billion. A strong answer notes that Amazon does not report a line called 'research and development'; it reports 'technology and infrastructure' (about $88.5B), which is not directly comparable.",
+    "expected_value": 49326000000,
+    "tolerance": 0.01,
+    "source": "GOOGL 10-K FY2024, Consolidated Statements of Income; AMZN 10-K FY2024",
+    "notes": "Tests whether your XBRL tag mapping handles Amazon correctly.",
+    "verified": false
+  },
+  {
+    "id": "num-003",
+    "question": "How much did AMD's net income change from fiscal 2023 to fiscal 2024?",
+    "category": "sql",
+    "check": "number",
+    "expected_answer": "It rose by about $787 million, from about $854 million to about $1.641 billion (roughly 92%).",
+    "expected_value": 787000000,
+    "tolerance": 0.02,
+    "source": "AMD 10-K FY2024, Consolidated Statements of Operations",
+    "verified": false
+  },
+  {
+    "id": "num-004",
+    "question": "Which company in the dataset had the highest operating income in fiscal year 2024?",
+    "category": "sql",
+    "check": "judge",
+    "expected_answer": "Apple, with about $123.2 billion (fiscal year ended September 2024). Alphabet (about $112.4B) and Microsoft (about $109.4B, fiscal year ended June 2024) follow.",
+    "expected_value": 123216000000,
+    "tolerance": 0.01,
+    "source": "AAPL 10-K FY2024, Consolidated Statements of Operations",
+    "verified": false
+  },
+  {
+    "id": "num-005",
+    "question": "What was Nvidia's R&D expense as a percentage of revenue in fiscal year 2025?",
+    "category": "sql",
+    "check": "number",
+    "expected_answer": "About 9.9% (about $12.9B R&D on about $130.5B revenue).",
+    "expected_value": 0.099,
+    "tolerance": 0.05,
+    "source": "NVDA 10-K FY2025, Consolidated Statements of Income",
+    "verified": false
+  },
+  {
+    "id": "api-001",
+    "question": "Has Intel filed any 8-K reports in the last 30 days?",
+    "category": "api",
+    "check": "judge",
+    "expected_answer": "Answer must come from a live call to the submissions endpoint: either list the 8-Ks with their filing dates, or say clearly that none were filed in the last 30 days. It must not guess.",
+    "source": "data.sec.gov/submissions/CIK0000050863.json (live)",
+    "verified": true
+  },
+  {
+    "id": "api-002",
+    "question": "When did Microsoft file its most recent 10-Q?",
+    "category": "api",
+    "check": "judge",
+    "expected_answer": "Gives a specific filing date taken from the live submissions data for the most recent 10-Q.",
+    "source": "data.sec.gov/submissions/CIK0000789019.json (live)",
+    "verified": true
+  },
+  {
+    "id": "api-003",
+    "question": "What forms has Tesla filed with the SEC this month?",
+    "category": "api",
+    "check": "judge",
+    "expected_answer": "Lists the form types and dates from the live submissions data for the current month (often Form 4 insider filings, possibly a 10-Q or 8-K), or says none were filed.",
+    "source": "data.sec.gov/submissions/CIK0001318605.json (live)",
+    "verified": true
+  },
+  {
+    "id": "multi-001",
+    "question": "How did AMD's revenue change from fiscal 2023 to fiscal 2024, and what reasons does management give?",
+    "category": "multi",
+    "check": "judge",
+    "expected_answer": "Revenue grew about 14%, from about $22.7B to about $25.8B. Management attributes this mainly to strong growth in the Data Center segment (EPYC CPUs and Instinct GPUs) and growth in Client, partly offset by declines in Gaming and Embedded.",
+    "expected_value": 25785000000,
+    "tolerance": 0.01,
+    "source": "AMD 10-K FY2024, Statements of Operations + Item 7",
+    "verified": false
+  },
+  {
+    "id": "multi-002",
+    "question": "Which company in the dataset had the biggest drop in net income from fiscal 2023 to fiscal 2024, and what risks did it highlight in its 10-K?",
+    "category": "multi",
+    "check": "judge",
+    "expected_answer": "Intel, which went from about $1.7B net income to a net loss of about $18.8B. Its risk factors highlight execution risk in its process technology roadmap and foundry strategy, heavy capital spending, competition, and dependence on government incentives.",
+    "source": "INTC 10-K FY2024, Statements of Operations + Item 1A",
+    "verified": false
+  },
+  {
+    "id": "multi-003",
+    "question": "Meta spent more on R&D than Apple in fiscal 2024. What does each company's 10-K say it is investing in?",
+    "category": "multi",
+    "check": "judge",
+    "expected_answer": "Confirms Meta (about $43.9B) above Apple (about $31.4B). Meta describes heavy investment in AI (models, infrastructure, Meta AI) and Reality Labs (AR/VR, wearables). Apple describes R&D focused on new products, services and technologies, including hardware, software, and silicon, and calls continued R&D investment critical.",
+    "source": "META and AAPL 10-K FY2024, Statements of Operations + Item 1/Item 7",
+    "verified": false
+  },
+  {
+    "id": "multi-004",
+    "question": "Has Nvidia filed any 8-Ks since its fiscal 2025 10-K, and does that 10-K discuss dependence on a small number of customers?",
+    "category": "multi",
+    "check": "judge",
+    "expected_answer": "Lists 8-Ks from live submissions data filed after the 10-K date, and confirms that the 10-K's risk factors discuss revenue concentration among a limited number of customers and partners.",
+    "source": "Live submissions endpoint + NVDA 10-K FY2025 Item 1A",
+    "verified": false
   },
   {
     "id": "trick-001",
     "question": "What will Apple's revenue be next year?",
     "category": "tricky",
-    "expected_answer": "Should decline: filings report historical results, not forecasts.",
-    "check": "refusal"
+    "check": "refusal",
+    "expected_answer": "Declines to predict. Explains that SEC filings report historical results and it does not make forecasts; may offer the most recent reported revenue instead.",
+    "verified": true
+  },
+  {
+    "id": "trick-002",
+    "question": "What was Shopify's revenue in 2024?",
+    "category": "tricky",
+    "check": "refusal",
+    "expected_answer": "Says Shopify is not one of the companies in its dataset, rather than guessing a number.",
+    "verified": true
+  },
+  {
+    "id": "trick-003",
+    "question": "What was Nvidia's revenue in 2024?",
+    "category": "tricky",
+    "check": "judge",
+    "expected_answer": "Flags the fiscal vs. calendar year ambiguity: Nvidia's fiscal 2025 ended in late January 2025 (revenue about $130.5B), while fiscal 2024 ended in January 2024 (revenue about $60.9B). It should either ask which one or give both clearly labeled.",
+    "source": "NVDA 10-K FY2025 and FY2024",
+    "verified": false
   }
 ]
