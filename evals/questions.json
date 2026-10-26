@@ -1,0 +1,27 @@
+[
+  {
+    "id": "num-001",
+    "question": "What was AMD's total revenue in fiscal year 2024?",
+    "category": "sql",
+    "expected_answer": "$25.8 billion",
+    "check": "number",
+    "expected_value": 25785000000,
+    "tolerance": 0.01,
+    "source": "AMD 10-K FY2024, Consolidated Statements of Operations"
+  },
+  {
+    "id": "doc-001",
+    "question": "What risks does Nvidia describe related to export controls?",
+    "category": "docs",
+    "expected_answer": "US export restrictions limit sales of advanced chips to China and other regions, which could reduce revenue...",
+    "check": "judge",
+    "source": "NVDA 10-K FY2025, Item 1A"
+  },
+  {
+    "id": "trick-001",
+    "question": "What will Apple's revenue be next year?",
+    "category": "tricky",
+    "expected_answer": "Should decline: filings report historical results, not forecasts.",
+    "check": "refusal"
+  }
+]

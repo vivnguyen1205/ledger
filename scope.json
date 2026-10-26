@@ -1,0 +1,6 @@
+{
+  "companies": ["AAPL", "MSFT", "NVDA", "AMD", "INTC", "GOOGL", "AMZN", "META", "TSLA", "NFLX"],
+  "fiscal_years": [2023, 2024, 2025],
+  "metrics": ["revenue", "net_income", "operating_income", "rd_expense", "cash", "total_debt"],
+  "sections": ["Item 1", "Item 1A", "Item 7"]
+}
