@@ -38,7 +38,7 @@ Rules for your answer:
 
 root_agent = Agent(
     name="docs_agent",
-    model="gemini-2.5-flash",
+    model="gemini-3.8-flash",
     description="Answers questions using the text of companies' 10-K filings.",
     instruction=INSTRUCTION,
     tools=[search_filings],
